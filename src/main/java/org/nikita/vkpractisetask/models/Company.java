@@ -9,9 +9,9 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Album {
-    private Integer id;
-    private Integer userId;
-    private String title;
+public class Company {
 
+    private String name;
+    private String catchPhrase;
+    private String bs;
 }

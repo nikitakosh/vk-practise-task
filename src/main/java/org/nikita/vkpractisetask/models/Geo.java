@@ -9,14 +9,8 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
-
-    private Integer id;
-    private String username;
-    private String email;
-    private String phone;
-    private String website;
-    private Company company;
-    private Address address;
+public class Geo {
+    private String lat;
+    private String lng;
 
 }

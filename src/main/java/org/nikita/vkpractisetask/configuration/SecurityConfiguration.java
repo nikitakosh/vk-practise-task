@@ -2,9 +2,7 @@ package org.nikita.vkpractisetask.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
-import static org.springframework.security.config.Customizer.withDefaults;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.core.userdetails.User;
@@ -17,7 +15,6 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 public class SecurityConfiguration {
-
 
 
     @Bean
@@ -38,6 +35,7 @@ public class SecurityConfiguration {
                 .httpBasic(Customizer.withDefaults());
         return http.build();
     }
+
     @Bean
     public UserDetailsService userDetailsService() {
         UserDetails admin = User.builder()
@@ -65,6 +63,7 @@ public class SecurityConfiguration {
                 .build();
         return new InMemoryUserDetailsManager(admin, userHasAccessToPosts, userHasAccessToUsers, userHasAccessToAlbums);
     }
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();

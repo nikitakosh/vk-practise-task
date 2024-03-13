@@ -60,7 +60,6 @@ public class TypiCodeClient {
     }
 
 
-
     public Album addAlbum(Album album) {
         return webClient.post()
                 .uri("/albums")

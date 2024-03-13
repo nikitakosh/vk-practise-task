@@ -7,7 +7,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.nikita.vkpractisetask.models.Audit;
 import org.nikita.vkpractisetask.services.AuditService;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -19,8 +20,10 @@ public class AuditAspect {
 
     private final AuditService auditService;
 
-    @Before("within(org.nikita.vkpractisetask.controller.*) && args(userDetails)")
-    public void saveRequestInDataBase(@AuthenticationPrincipal UserDetails userDetails) {
+    @Before("within(org.nikita.vkpractisetask.controller.*)")
+    public void saveRequestInDataBase() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         log.info("audit");
         Audit audit = new Audit();
         audit.setRequestTime(LocalDateTime.now());

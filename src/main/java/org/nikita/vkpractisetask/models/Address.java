@@ -9,9 +9,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Album {
-    private Integer id;
-    private Integer userId;
-    private String title;
-
+public class Address {
+    private String street;
+    private String suite;
+    private String city;
+    private String zipcode;
+    private Geo geo;
 }
